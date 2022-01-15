@@ -44,11 +44,11 @@ namespace POS
 
             if(cboCashier.Text== "All Cashier")
             {
-                cm = new SqlCommand("select c.id,c.transno,c.pcode , p.pdesc ,c.price,c.qty,c.disc,c.total from tblCart as c inner join tblProduct as p on p.pcode = c.pcode where status like 'Sold' and sdate between '" + dt1.Value + "' and '" + dt2.Value + "'", cn);
+                cm = new SqlCommand("select c.id,c.transno,c.pcode , p.pdesc ,c.price,c.qty,c.disc,c.total from tblCart as c inner join tblProduct as p on p.pcode = c.pcode where status like 'Sold' and sdate between '" + dt1.Value.ToString("yyyy-MM-dd") + "' and '" + dt2.Value.ToString("yyyy-MM-dd") + "'", cn);
             }
             else
             {
-                cm = new SqlCommand("select c.id,c.transno,c.pcode , p.pdesc ,c.price,c.qty,c.disc,c.total from tblCart as c inner join tblProduct as p on p.pcode = c.pcode where status like 'Sold' and sdate between '" + dt1.Value + "' and '" + dt2.Value + "' and cashier like '" + cboCashier.Text + "' ", cn);
+                cm = new SqlCommand("select c.id,c.transno,c.pcode , p.pdesc ,c.price,c.qty,c.disc,c.total from tblCart as c inner join tblProduct as p on p.pcode = c.pcode where status like 'Sold' and sdate between '" + dt1.Value.ToString("yyyy-MM-dd") + "' and '" + dt2.Value.ToString("yyyy-MM-dd") + "' and cashier like '" + cboCashier.Text + "' ", cn);
 
             }
 

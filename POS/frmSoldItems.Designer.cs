@@ -128,7 +128,7 @@
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column1.HeaderText = "#";
             this.Column1.Name = "Column1";
-            this.Column1.Width = 47;
+            this.Column1.Width = 40;
             // 
             // Column2
             // 
@@ -141,14 +141,14 @@
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column4.HeaderText = "INVOCIE #";
             this.Column4.Name = "Column4";
-            this.Column4.Width = 119;
+            this.Column4.Width = 98;
             // 
             // Column6
             // 
             this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column6.HeaderText = "PCODE";
             this.Column6.Name = "Column6";
-            this.Column6.Width = 92;
+            this.Column6.Width = 77;
             // 
             // Column7
             // 
@@ -163,21 +163,21 @@
             this.Column5.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column5.HeaderText = "PRICE";
             this.Column5.Name = "Column5";
-            this.Column5.Width = 82;
+            this.Column5.Width = 68;
             // 
             // Column8
             // 
             this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column8.HeaderText = "QTY";
             this.Column8.Name = "Column8";
-            this.Column8.Width = 67;
+            this.Column8.Width = 57;
             // 
             // Column9
             // 
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column9.HeaderText = "DISC";
             this.Column9.Name = "Column9";
-            this.Column9.Width = 74;
+            this.Column9.Width = 62;
             // 
             // Column10
             // 
@@ -186,7 +186,7 @@
             this.Column10.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column10.HeaderText = "TOTAL";
             this.Column10.Name = "Column10";
-            this.Column10.Width = 84;
+            this.Column10.Width = 70;
             // 
             // colCancel
             // 
@@ -201,7 +201,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(24, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(199, 23);
+            this.label1.Size = new System.Drawing.Size(163, 19);
             this.label1.TabIndex = 5;
             this.label1.Text = "Filter By Date (From - To)";
             // 
@@ -210,7 +210,7 @@
             this.dt1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt1.Location = new System.Drawing.Point(229, 77);
             this.dt1.Name = "dt1";
-            this.dt1.Size = new System.Drawing.Size(156, 30);
+            this.dt1.Size = new System.Drawing.Size(156, 26);
             this.dt1.TabIndex = 6;
             this.dt1.ValueChanged += new System.EventHandler(this.dt1_ValueChanged);
             // 
@@ -219,7 +219,7 @@
             this.dt2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt2.Location = new System.Drawing.Point(391, 77);
             this.dt2.Name = "dt2";
-            this.dt2.Size = new System.Drawing.Size(156, 30);
+            this.dt2.Size = new System.Drawing.Size(156, 26);
             this.dt2.TabIndex = 7;
             this.dt2.ValueChanged += new System.EventHandler(this.dt2_ValueChanged);
             // 
@@ -255,14 +255,14 @@
             this.cboCashier.FormattingEnabled = true;
             this.cboCashier.Location = new System.Drawing.Point(563, 76);
             this.cboCashier.Name = "cboCashier";
-            this.cboCashier.Size = new System.Drawing.Size(189, 31);
+            this.cboCashier.Size = new System.Drawing.Size(189, 27);
             this.cboCashier.TabIndex = 10;
             this.cboCashier.SelectedIndexChanged += new System.EventHandler(this.cboCashier_SelectedIndexChanged);
             this.cboCashier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboCashier_KeyPress);
             // 
             // frmSoldItems
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1198, 598);
             this.ControlBox = false;

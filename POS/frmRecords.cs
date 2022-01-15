@@ -69,7 +69,7 @@ namespace POS
 
             cn.Open();
 
-            cm = new SqlCommand("select * from vwcancelledOrder where sdate between '"+dateTimePicker6.Value.ToString()+"' and '"+dateTimePicker5.Value.ToString()+"' ", cn);
+            cm = new SqlCommand("select * from vwcancelledOrder where sdate between '"+dateTimePicker6.Value.ToString("yyyy-MM-dd")+"' and '"+dateTimePicker5.Value.ToString("yyyy-MM-dd") +"' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -88,12 +88,12 @@ namespace POS
             
             if(cboSort.Text == "SORT BY QTY")
             {
-                cm = new SqlCommand("select top 10 pcode, pdesc,isnull( sum(qty),0) as qty , isnull(sum(total),0) as total from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString() + "' and '" + dateTimePicker2.Value.ToString() + "' and status like 'Sold'   group by pcode,pdesc order by qty desc", cn);
+                cm = new SqlCommand("select top 10 pcode, pdesc,isnull( sum(qty),0) as qty , isnull(sum(total),0) as total from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") + "' and status like 'Sold'   group by pcode,pdesc order by qty desc", cn);
 
             }
             else if( cboSort.Text == "SORT BY TOTAL")
             {
-                cm = new SqlCommand("select top 10 pcode, pdesc,isnull( sum(qty),0) as qty , isnull(sum(total),0) as total from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString() + "' and '" + dateTimePicker2.Value.ToString() + "' and status like 'Sold'   group by pcode,pdesc order by total desc", cn);
+                cm = new SqlCommand("select top 10 pcode, pdesc,isnull( sum(qty),0) as qty , isnull(sum(total),0) as total from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") + "' and status like 'Sold'   group by pcode,pdesc order by total desc", cn);
 
             }
 
@@ -137,7 +137,7 @@ namespace POS
             int i = 0;
             dataGridView7.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("select * from vwstockin  where sdate between '" + dateTimePicker8.Value + "' and '" + dateTimePicker7.Value + "' and status like 'Done'", cn);
+            cm = new SqlCommand("select * from vwstockin  where sdate between '" + dateTimePicker8.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker7.Value.ToString("yyyy-MM-dd") + "' and status like 'Done'", cn);
             // cm = new SqlCommand("select * from vwstockin", cn); tan wslo vendor
             dr = cm.ExecuteReader();
             while (dr.Read())
@@ -164,12 +164,12 @@ namespace POS
 
             if(cboSort.Text == "SORT BY QTY")
             {
-                frm.loadTop("select top 10 pcode, pdesc,isnull( sum(qty),0) as qty , isnull(sum(total),0) as total from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString() + "' and '" + dateTimePicker2.Value.ToString() + "' and status like 'Sold'   group by pcode,pdesc order by qty desc", "DATE -> FROM : " + dateTimePicker1.Value.ToShortDateString() + " TO " + dateTimePicker2.Value.ToShortDateString());
+                frm.loadTop("select top 10 pcode, pdesc,isnull( sum(qty),0) as qty , isnull(sum(total),0) as total from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") + "' and status like 'Sold'   group by pcode,pdesc order by qty desc", "DATE -> FROM : " + dateTimePicker1.Value.ToShortDateString() + " TO " + dateTimePicker2.Value.ToShortDateString());
 
             }
             else if(cboSort.Text == "SORT BY TOTAL")
             {
-                frm.loadTop("select top 10 pcode, pdesc,isnull( sum(qty),0) as qty , isnull(sum(total),0) as total from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString() + "' and '" + dateTimePicker2.Value.ToString() + "' and status like 'Sold'   group by pcode,pdesc order by total desc", "DATE -> FROM : " + dateTimePicker1.Value.ToShortDateString() + " TO " + dateTimePicker2.Value.ToShortDateString());
+                frm.loadTop("select top 10 pcode, pdesc,isnull( sum(qty),0) as qty , isnull(sum(total),0) as total from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") + "' and status like 'Sold'   group by pcode,pdesc order by total desc", "DATE -> FROM : " + dateTimePicker1.Value.ToShortDateString() + " TO " + dateTimePicker2.Value.ToShortDateString());
 
             }
 
@@ -180,7 +180,7 @@ namespace POS
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmInventoryReport frm = new frmInventoryReport();
-            frm.loadSold("select v.pcode, p.pdesc, v.price, sum(v.qty) as qty, sum(v.disc) as disc, sum(v.total) as total  from tblCart as v inner join tblProduct as p on p.pcode = v.pcode   where v.status like 'Sold' and v.sdate between '" + dateTimePicker3.Value.ToString() + "' and '" + dateTimePicker4.Value.ToString() + "'  group by v.pcode, p.pdesc, v.price", "DATE -> FROM : " + dateTimePicker3.Value.ToShortDateString() + " TO " + dateTimePicker4.Value.ToShortDateString());
+            frm.loadSold("select v.pcode, p.pdesc, v.price, sum(v.qty) as qty, sum(v.disc) as disc, sum(v.total) as total  from tblCart as v inner join tblProduct as p on p.pcode = v.pcode   where v.status like 'Sold' and v.sdate between '" + dateTimePicker3.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker4.Value.ToString("yyyy-MM-dd") + "'  group by v.pcode, p.pdesc, v.price", "DATE -> FROM : " + dateTimePicker3.Value.ToShortDateString() + " TO " + dateTimePicker4.Value.ToShortDateString());
             frm.ShowDialog();
 
         }
@@ -203,12 +203,12 @@ namespace POS
             cn.Open();
             if (cboSort.Text == "SORT BY QTY")
             {
-                 da = new SqlDataAdapter ("select top 10 pdesc,isnull( sum(qty),0) as qty  from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString() + "' and '" + dateTimePicker2.Value.ToString() + "' and status like 'Sold'   group by pdesc order by qty desc", cn);
+                 da = new SqlDataAdapter ("select top 10 pdesc,isnull( sum(qty),0) as qty  from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") + "' and status like 'Sold'   group by pdesc order by qty desc", cn);
 
             }
             else if (cboSort.Text == "SORT BY TOTAL")
             {
-                  da = new SqlDataAdapter("select top 10 pdesc , isnull(sum(total),0) as total from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString() + "' and '" + dateTimePicker2.Value.ToString() + "' and status like 'Sold'   group by pdesc order by total desc", cn);
+                  da = new SqlDataAdapter("select top 10 pdesc , isnull(sum(total),0) as total from vwSoldItems where sdate between '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") + "' and status like 'Sold'   group by pdesc order by total desc", cn);
 
             }
             DataSet ds = new DataSet();
@@ -257,7 +257,7 @@ namespace POS
 
                 cn.Open();
 
-                cm = new SqlCommand("select v.pcode, p.pdesc , sum(v.qty) as qty ,v.price, sum(v.disc) as disc,sum(v.total) as total  from tblCart as v inner join tblProduct as p on p.pcode = v.pcode   where v.status like 'Sold' and v.sdate between '" + dateTimePicker3.Value.ToString() + "' and '" + dateTimePicker4.Value.ToString() + "'  group by v.pcode,p.pdesc,v.price ", cn);
+                cm = new SqlCommand("select v.pcode, p.pdesc , sum(v.qty) as qty ,v.price, sum(v.disc) as disc,sum(v.total) as total  from tblCart as v inner join tblProduct as p on p.pcode = v.pcode   where v.status like 'Sold' and v.sdate between '" + dateTimePicker3.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker4.Value.ToString("yyyy-MM-dd") + "'  group by v.pcode,p.pdesc,v.price ", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -271,7 +271,7 @@ namespace POS
                 String x = "";
                 cn.Open();
 
-                cm = new SqlCommand("select isnull( sum(total) ,0) from tblCart where status like 'Sold' and sdate between '" + dateTimePicker3.Value.ToString() + "' and '" + dateTimePicker4.Value.ToString() + "' ", cn);
+                cm = new SqlCommand("select isnull( sum(total) ,0) from tblCart where status like 'Sold' and sdate between '" + dateTimePicker3.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker4.Value.ToString("yyyy-MM-dd") + "' ", cn);
 
                 x = cm.ExecuteScalar().ToString();
                 lblTotal.Text = double.Parse(x).ToString();
@@ -290,7 +290,7 @@ namespace POS
         {
             frmChart frm = new frmChart();
             frm.lbltitle.Text = "SOLD ITEMS ["+dateTimePicker3.Value.ToShortDateString()+" - "+dateTimePicker4.Value.ToShortDateString()+"]";
-            frm.loadChartSoldItems("select  p.pdesc, sum(v.total) as total  from tblCart as v inner join tblProduct as p on p.pcode = v.pcode   where v.status like 'Sold' and v.sdate between '" + dateTimePicker3.Value.ToString() + "' and '" + dateTimePicker4.Value.ToString() + "'  group by  p.pdesc  order by total desc");
+            frm.loadChartSoldItems("select  p.pdesc, sum(v.total) as total  from tblCart as v inner join tblProduct as p on p.pcode = v.pcode   where v.status like 'Sold' and v.sdate between '" + dateTimePicker3.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker4.Value.ToString("yyyy-MM-dd") + "'  group by  p.pdesc  order by total desc");
             frm.ShowDialog();
         }
 
@@ -302,8 +302,13 @@ namespace POS
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmInventoryReport frm = new frmInventoryReport();
-            frm.loadStockInReport("select * from vwstockin where sdate between '" + dateTimePicker8.Value + "' and '" + dateTimePicker7.Value + "' and status like 'Done'");
+            frm.loadStockInReport("select * from vwstockin where sdate between '" + dateTimePicker8.Value.ToString("yyyy-MM-dd") + "' and '" + dateTimePicker7.Value.ToString("yyyy-MM-dd") + "' and status like 'Done'");
             frm.ShowDialog();
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

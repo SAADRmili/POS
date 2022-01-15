@@ -20,7 +20,7 @@ namespace POS
       
         public String MyConnection()
         {
-            string con = @"Data Source=DESKTOP-63LLDHF;Initial Catalog=POS_DEMO_DB;Integrated Security=True";
+            string con = @"Data Source=DESKTOP-0CN63T0\SQLEXPRESS;Initial Catalog=POS_DEMO_DB;Integrated Security=True";
             return con; 
 
         }
@@ -42,11 +42,11 @@ namespace POS
 
         public double DailySeles()
         {
-            string sdate = DateTime.Now.ToShortDateString();
+            string sdate = DateTime.Now.ToString("yyyy-MM-dd");
             cn.ConnectionString = MyConnection();
             cn.Open();
-            cm = new SqlCommand("select isnull(sum(total),0) as total from tblcart where sdate between  '"+sdate+"' and '"+sdate+"' and status like 'Sold'  ", cn);
-            dailysales = Double.Parse(cm.ExecuteScalar().ToString());
+            cm = new SqlCommand("select isnull(sum(total),0) as total from tblcart where sdate between '"+sdate+"' and '"+sdate+"' and status like 'Sold'  ", cn);
+             dailysales = Double.Parse(cm.ExecuteScalar().ToString());
             cn.Close();
             return dailysales;
         }
